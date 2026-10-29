@@ -1,0 +1,27 @@
+/* Estilos globais compartilhados do Entrelinhas */
+:root {
+  --ifrn-green: #08783e;
+  --ifrn-green-dark: #075a31;
+  --ifrn-red: #c62828;
+  --ink: #183329;
+  --muted: #63736b;
+  --paper: #f7faf7;
+  --white: #ffffff;
+  --fonte-principal: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--fonte-principal);
+  color: var(--ink);
+  background: var(--paper);
+}
+img { max-width: 100%; }
+button, input, textarea, select { font: inherit; }
+a { color: inherit; }
+
+.site-top-line {
+  height: 6px;
+  background: linear-gradient(90deg, var(--ifrn-green) 0 72%, var(--ifrn-red) 72% 100%);
+}

@@ -1,71 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Área do Aluno | Entrelinhas</title>
-</head>
-<body>
-<style>
-  :root {
-    --student-green: #08783e;
-    --student-green-dark: #075a31;
-    --student-red: #c62828;
-    --student-ink: #183329;
-    --student-muted: #64746b;
-    --student-bg: #f5f8f5;
-    --student-border: #e2eae3;
-  }
+{% extends "base.html" %}
 
-  .student-page { background: var(--student-bg); min-height: 100vh; color: var(--student-ink); }
-  .student-wrap { max-width: 1200px; margin: 0 auto; padding: 34px 26px 60px; }
-  .student-topbar { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:30px; }
-  .student-brand { display:flex; align-items:center; gap:12px; }
-  .student-brand-mark { width:44px; height:44px; display:grid; place-items:center; color:#fff; background:var(--student-green); border-radius:13px 13px 13px 4px; font-weight:850; }
-  .student-brand strong { display:block; font-size:19px; }
-  .student-brand small { display:block; color:var(--student-muted); font-size:11px; margin-top:3px; text-transform:uppercase; letter-spacing:.7px; }
-  .student-top-actions { display:flex; align-items:center; gap:12px; }
-  .student-avatar { width:38px; height:38px; display:grid; place-items:center; border-radius:50%; color:var(--student-green-dark); background:#dcefe2; font-weight:800; }
-  .student-logout { color:var(--student-green-dark); text-decoration:none; font-weight:700; font-size:13px; }
-  .student-welcome { display:flex; justify-content:space-between; align-items:center; gap:30px; padding:34px 36px; color:white; background:linear-gradient(120deg,#075a31,#08783e); border-radius:22px; overflow:hidden; position:relative; }
-  .student-welcome:after { content:""; position:absolute; width:280px; height:280px; border:1px solid #ffffff25; border-radius:50%; right:-75px; top:-120px; box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff06; }
-  .student-kicker { color:#c9e8d2; font-size:11px; text-transform:uppercase; letter-spacing:1.4px; font-weight:800; }
-  .student-welcome h1 { margin:11px 0 10px; font-size:clamp(28px,4vw,42px); line-height:1.12; letter-spacing:-1.3px; }
-  .student-welcome p { margin:0; max-width:600px; color:#e0f0e4; line-height:1.65; font-size:14px; }
-  .welcome-stamp { position:relative; z-index:1; width:92px; height:92px; flex:0 0 92px; border-radius:26px; background:#ffffff16; border:1px solid #ffffff35; display:grid; place-items:center; font-size:39px; }
-  .student-section-heading { display:flex; align-items:end; justify-content:space-between; gap:20px; margin:34px 0 17px; }
-  .student-section-heading h2 { margin:0; font-size:22px; letter-spacing:-.5px; }
-  .student-section-heading p { margin:6px 0 0; color:var(--student-muted); font-size:13px; }
-  .student-link { color:var(--student-green); text-decoration:none; font-size:13px; font-weight:800; white-space:nowrap; }
-  .student-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
-  .student-card { background:#fff; border:1px solid var(--student-border); border-radius:17px; padding:23px; box-shadow:0 5px 18px #173e2605; }
-  .student-card-top { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; }
-  .student-icon { width:43px; height:43px; display:grid; place-items:center; border-radius:13px; background:#e5f4e9; color:var(--student-green); font-size:21px; }
-  .student-icon.red { background:#fbeaea; color:var(--student-red); }
-  .student-icon.gold { background:#fff2d9; color:#966411; }
-  .student-pill { border-radius:999px; padding:6px 9px; color:#08783e; background:#e7f5ea; font-size:10px; font-weight:800; }
-  .student-card h3 { margin:0 0 8px; font-size:17px; }
-  .student-card p { margin:0; color:var(--student-muted); font-size:13px; line-height:1.65; }
-  .student-card-action { display:inline-flex; align-items:center; gap:8px; margin-top:19px; color:var(--student-green); text-decoration:none; font-size:13px; font-weight:800; }
-  .student-lower-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:17px; margin-top:20px; }
-  .student-progress-card, .student-tip-card { background:#fff; border:1px solid var(--student-border); border-radius:17px; padding:24px; }
-  .student-progress-head { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
-  .student-progress-head h3, .student-tip-card h3 { margin:0; font-size:17px; }
-  .student-progress-head span { color:var(--student-green); font-size:12px; font-weight:800; }
-  .student-progress-row { margin:17px 0; }
-  .student-progress-label { display:flex; justify-content:space-between; gap:12px; color:#40584a; font-size:12px; margin-bottom:8px; }
-  .student-progress-track { height:8px; border-radius:99px; background:#edf2ed; overflow:hidden; }
-  .student-progress-fill { height:100%; border-radius:99px; background:var(--student-green); }
-  .student-progress-fill.red { background:var(--student-red); }
-  .student-tip-card { background:#fffafa; border-color:#f0dede; }
-  .student-tip-card .tip-symbol { font-size:24px; margin-bottom:12px; }
-  .student-tip-card p { color:var(--student-muted); font-size:13px; line-height:1.7; }
-  .student-tip-card a { color:var(--student-red); text-decoration:none; font-weight:800; font-size:13px; }
-  .student-footer { border-top:1px solid var(--student-border); margin-top:30px; padding-top:20px; display:flex; justify-content:space-between; gap:15px; color:#7b8980; font-size:11px; }
-  @media(max-width:850px) { .student-grid { grid-template-columns:1fr 1fr; } .student-lower-grid { grid-template-columns:1fr; } }
-  @media(max-width:560px) { .student-wrap { padding:22px 15px 40px; } .student-welcome { padding:26px 22px; } .welcome-stamp { display:none; } .student-grid { grid-template-columns:1fr; } .student-section-heading { align-items:start; flex-direction:column; } .student-topbar { align-items:flex-start; } .student-top-actions { flex-wrap:wrap; justify-content:flex-end; } .student-footer { flex-direction:column; } }
-</style>
+{% block titulo %}Área do Aluno | Entrelinhas{% endblock %}
 
+{% block estilos %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/aluno.css') }}">
+{% endblock %}
+
+{% block faixa_superior %}{% endblock %}
+{% block cabecalho %}{% endblock %}
+{% block rodape %}{% endblock %}
+
+{% block pagina %}
 <div class="student-page">
   <div class="student-wrap">
     <header class="student-topbar">
@@ -153,5 +98,4 @@
     </footer>
   </div>
 </div>
-</body>
-</html>
+{% endblock %}

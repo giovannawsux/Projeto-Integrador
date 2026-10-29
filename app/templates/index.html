@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block titulo %}Entrelinhas | Sequências Textuais{% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
 {% block conteudo %}
     <section class="hero">
       <div class="hero-content">

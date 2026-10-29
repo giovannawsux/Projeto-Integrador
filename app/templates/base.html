@@ -3,327 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrelinhas | Sequências Textuais</title>
-  <style>
-    :root {
-      --ifrn-green: #08783e;
-      --ifrn-green-dark: #075a31;
-      --ifrn-red: #c62828;
-      --ink: #183329;
-      --muted: #63736b;
-      --paper: #f7faf7;
-      --white: #ffffff;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--ink);
-      background: var(--paper);
-    }
-    a { color: inherit; }
-    .top-line {
-      height: 6px;
-      background: linear-gradient(90deg, var(--ifrn-green) 0 72%, var(--ifrn-red) 72% 100%);
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      padding: 22px clamp(22px, 6vw, 88px);
-      background: rgba(255,255,255,.94);
-      border-bottom: 1px solid #e4ebe5;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      text-decoration: none;
-    }
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 46px;
-      height: 46px;
-      border-radius: 14px 14px 14px 4px;
-      background: var(--ifrn-green);
-      color: white;
-      font-weight: 800;
-      font-size: 19px;
-      letter-spacing: -1px;
-      box-shadow: 0 7px 18px #08783e2b;
-    }
-    .brand-name { font-weight: 800; font-size: 20px; letter-spacing: -.5px; }
-    .brand-sub { display: block; color: var(--muted); font-size: 11px; margin-top: 3px; letter-spacing: .8px; text-transform: uppercase; }
-    .header-note { font-size: 13px; color: var(--muted); text-align: right; }
-    main { overflow: hidden; }
-    .hero {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
-      align-items: center;
-      gap: clamp(36px, 6vw, 86px);
-      padding: 76px clamp(22px, 9vw, 132px) 86px;
-      min-height: 610px;
-      background:
-        radial-gradient(circle at 82% 20%, #dcefe2 0, transparent 29%),
-        linear-gradient(135deg, #f7faf7 0%, #eef6ef 100%);
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 340px;
-      height: 340px;
-      border: 1px solid #08783e18;
-      border-radius: 50%;
-      right: -130px;
-      bottom: -180px;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--ifrn-green-dark);
-      background: #e0f1e5;
-      border: 1px solid #c9e7d2;
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-size: 12px;
-      font-weight: 750;
-      letter-spacing: .6px;
-      text-transform: uppercase;
-    }
-    .eyebrow-dot { width: 7px; height: 7px; background: var(--ifrn-red); border-radius: 50%; }
-    h1 {
-      max-width: 680px;
-      margin: 23px 0 20px;
-      font-size: clamp(40px, 5vw, 66px);
-      line-height: 1.04;
-      letter-spacing: -2.8px;
-      color: #153c29;
-    }
-    h1 span { color: var(--ifrn-green); }
-    .intro {
-      max-width: 570px;
-      color: #586b60;
-      font-size: 17px;
-      line-height: 1.8;
-      margin: 0 0 30px;
-    }
-    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 750;
-      transition: transform .2s, box-shadow .2s, background .2s;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary {
-      color: white;
-      background: var(--ifrn-green);
-      box-shadow: 0 10px 22px #08783e2b;
-    }
-    .button-primary:hover { background: var(--ifrn-green-dark); box-shadow: 0 13px 26px #08783e3b; }
-    .button-secondary { color: var(--ifrn-green-dark); border: 1px solid #d2e2d6; background: #fff; }
-    .button .arrow { font-size: 18px; }
-    .project-meta { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 35px; }
-    .meta-item { border-left: 2px solid #b8d8c1; padding-left: 12px; }
-    .meta-label { display: block; color: #78867e; font-size: 11px; text-transform: uppercase; letter-spacing: .7px; margin-bottom: 5px; }
-    .meta-value { color: #294637; font-size: 13px; font-weight: 700; }
-
-    .visual { position: relative; min-height: 390px; display: grid; place-items: center; }
-    .visual-halo {
-      position: absolute;
-      width: min(100%, 390px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: #dcefe2;
-    }
-    .paper-card {
-      position: relative;
-      width: min(100%, 350px);
-      padding: 28px;
-      background: white;
-      border: 1px solid #e4ebe5;
-      border-radius: 22px;
-      box-shadow: 0 25px 70px #164a2a16;
-      transform: rotate(-2deg);
-    }
-    .paper-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-    .paper-label { color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 1.1px; text-transform: uppercase; }
-    .paper-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: var(--ifrn-green); background: #e8f5eb; font-size: 20px; }
-    .sample-title { font-size: 22px; font-weight: 800; letter-spacing: -.7px; margin-bottom: 8px; }
-    .sample-text { color: #6b7a71; font-size: 13px; line-height: 1.7; margin: 0 0 22px; }
-    .sample-rule { height: 7px; border-radius: 8px; background: #edf1ed; margin: 9px 0; }
-    .sample-rule.short { width: 65%; }
-    .sample-rule.mid { width: 83%; }
-    .type-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
-    .type-tag { font-size: 11px; font-weight: 750; padding: 8px 10px; border-radius: 8px; }
-    .tag-narrative { background: #e5f4e9; color: #08783e; }
-    .tag-descriptive { background: #fbe9e9; color: #b52323; }
-    .floating-note {
-      position: absolute;
-      right: -3px;
-      bottom: 35px;
-      padding: 13px 16px;
-      border: 1px solid #e6eee7;
-      border-radius: 13px;
-      background: white;
-      box-shadow: 0 12px 35px #164a2a12;
-      font-size: 12px;
-      font-weight: 750;
-      color: #315541;
-      transform: rotate(3deg);
-    }
-    .floating-note span { color: var(--ifrn-red); margin-right: 7px; }
-
-    .about {
-      padding: 70px clamp(22px, 9vw, 132px) 76px;
-      background: white;
-    }
-    .section-heading { max-width: 640px; margin-bottom: 30px; }
-    .section-kicker { color: var(--ifrn-red); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.3px; }
-    h2 { font-size: clamp(27px, 3vw, 38px); line-height: 1.15; letter-spacing: -1px; margin: 11px 0 12px; }
-    .section-heading p { color: var(--muted); line-height: 1.7; margin: 0; }
-    .feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-    .feature {
-      padding: 25px;
-      border: 1px solid #e4ebe5;
-      border-radius: 16px;
-      background: #fbfdfb;
-    }
-    .feature-number { font-size: 12px; color: var(--ifrn-green); font-weight: 800; letter-spacing: 1px; }
-    .feature h3 { margin: 13px 0 8px; font-size: 19px; }
-    .feature p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
-    footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      padding: 23px clamp(22px, 6vw, 88px);
-      color: #e7f3e9;
-      background: #124b2d;
-      font-size: 12px;
-    }
-    footer strong { color: white; }
-    .footer-mark { color: #ffb8b8; }
-
-
-    .access-section {
-      margin-top: 42px;
-      padding: clamp(22px, 4vw, 38px);
-      border: 1px solid #e1ebe3;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #f4faf5 0%, #ffffff 75%);
-    }
-    .access-heading { max-width: 720px; margin-bottom: 25px; }
-    .access-heading h3 { margin: 10px 0 10px; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: -.7px; }
-    .access-heading p { color: var(--muted); line-height: 1.75; margin: 0; }
-    .access-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
-      gap: 24px;
-      align-items: start;
-    }
-    .user-types { display: grid; gap: 14px; }
-    .user-type {
-      display: flex;
-      gap: 15px;
-      padding: 20px;
-      border: 1px solid #e2ebe4;
-      border-radius: 15px;
-      background: #fff;
-    }
-    .user-icon {
-      flex: 0 0 44px;
-      display: grid;
-      place-items: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 13px;
-      background: #e4f4e9;
-      color: var(--ifrn-green);
-      font-size: 21px;
-    }
-    .user-type:nth-child(2) .user-icon { background: #fbeaea; color: var(--ifrn-red); }
-    .user-type h4 { margin: 1px 0 6px; font-size: 17px; }
-    .user-type p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
-    .suap-note {
-      margin-top: 15px;
-      padding: 14px 16px;
-      border-left: 3px solid var(--ifrn-green);
-      border-radius: 0 10px 10px 0;
-      background: #eaf5ed;
-      color: #355744;
-      font-size: 13px;
-      line-height: 1.65;
-    }
-    .suap-figure { margin: 0; min-width: 0; }
-    .suap-figure img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border: 1px solid #dce5de;
-      border-radius: 14px;
-      box-shadow: 0 16px 38px #164a2a16;
-    }
-    .suap-figure figcaption {
-      margin-top: 10px;
-      color: #758279;
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-    @media (max-width: 800px) {
-      .hero { grid-template-columns: 1fr; padding-top: 56px; }
-      .access-layout { grid-template-columns: 1fr; }
-      .visual { min-height: 350px; }
-      .paper-card { max-width: 330px; }
-      .floating-note { right: 2%; }
-      .header-note { display: none; }
-    }
-    @media (max-width: 520px) {
-      h1 { letter-spacing: -1.7px; }
-      .hero { padding-bottom: 55px; }
-      .feature-grid { grid-template-columns: 1fr; }
-      .project-meta { gap: 17px; }
-      footer { align-items: flex-start; flex-direction: column; }
-      .actions { align-items: stretch; flex-direction: column; }
-      .button { width: 100%; }
-    }
-  </style>
+  <title>{% block titulo %}Entrelinhas | Sequências Textuais{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  {% block estilos %}{% endblock %}
 </head>
 <body>
-<div class="top-line"></div>
-  <header>
-    <a class="brand" href="{{ url_for('sobre') }}" aria-label="Entrelinhas — início">
+  {% block faixa_superior %}
+  <div class="site-top-line"></div>
+  {% endblock %}
+
+  {% block cabecalho %}
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('index') }}" aria-label="Entrelinhas — início">
       <div class="brand-mark">En</div>
       <div>
         <div class="brand-name">Entrelinhas</div>
-        <span class="brand-sub">Projeto Integrador de Língua Portuguesa e Literatura III & Programação para Internet</span>
+        <span class="brand-sub">Projeto Integrador de Língua Portuguesa e Literatura III &amp; Programação para Internet</span>
       </div>
     </a>
     <div class="header-note">IFRN · INFO3M<br>Leitura, escrita e análise de sequências textuais.</div>
   </header>
+  {% endblock %}
 
-  <main>
-    {% block conteudo %}
-    {% endblock %}
-</main>
+  {% block pagina %}
+  <main class="site-main">
+    {% block conteudo %}{% endblock %}
+  </main>
+  {% endblock %}
 
-<footer>
+  {% block rodape %}
+  <footer class="site-footer">
     <div><strong>Entrelinhas</strong> <span class="footer-mark">·</span> Projeto Integrador do Curso Técnico de Informática do IFRN</div>
     <div>INFO3M · Orientação: Prof.ª Jucely Regis</div>
   </footer>
+  {% endblock %}
+
+  {% block scripts %}{% endblock %}
 </body>
 </html>

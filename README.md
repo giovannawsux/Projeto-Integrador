@@ -107,3 +107,13 @@ app_flask/
 ## Licença
 
 Este projeto inclui recursos visuais baseados no template [Start Bootstrap SB Admin 2](https://startbootstrap.com/theme/sb-admin-2), cuja licença está disponível em `startbootstrap-sb-admin-2-gh-pages/LICENSE`.
+
+
+## Organização dos templates e estilos
+
+- `app/templates/base.html`: estrutura HTML compartilhada e blocos Jinja para título, estilos, cabeçalho, conteúdo, rodapé e scripts.
+- `app/templates/index.html`, `login.html`, `aluno.html` e `professor.html`: páginas que herdam de `base.html` e substituem os blocos necessários.
+- `app/static/css/base.css`: fonte, cores e regras globais compartilhadas.
+- `app/static/css/index.css`, `login.css`, `aluno.css` e `professor.css`: estilos específicos de cada página. Os arquivos específicos reutilizam as variáveis de cores definidas em `base.css`.
+
+Ao criar uma nova página, prefira usar `{% extends "base.html" %}` e carregar apenas o CSS específico de que ela precisa no bloco `{% block estilos %}`.
