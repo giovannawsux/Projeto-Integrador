@@ -43,7 +43,7 @@ class SuapAuthenticationService:
     @classmethod
     def eu(cls, access_token):
         request = Request(
-            f"{current_app.config['SUAP_URL']}/api/rh/eu/",
+            f"{current_app.config['SUAP_URL']}/api/rh/meus-dados/",
             headers={
                 'Authorization': f'Bearer {access_token}',
                 'Accept': 'application/json',

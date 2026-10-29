@@ -152,8 +152,11 @@ def suap_eu():
     #return render_template('suap_eu.html', title='Perfil SUAP', dados=dados, foto_url=foto_url)
     print(dados)
 
-    if dados.get('tipo_usuario') == 'Aluno':
+    if dados.get('tipo_vinculo') == 'Aluno':
         return redirect(url_for('aluno'))
 
-    elif dados.get('tipo_usuario') == 'Servidor (Docente)':
-        return redirect(url_for('professor'))
+    elif dados.get('tipo_vinculo') == 'Servidor (Docente)':
+        if "Portuguesa" in dados.get('tipo_vinculo'):
+            return redirect(url_for('professor'))
+        else:
+            return redirect(url_for('index'))
