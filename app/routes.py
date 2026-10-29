@@ -155,8 +155,9 @@ def suap_eu():
     if dados.get('tipo_vinculo') == 'Aluno':
         return redirect(url_for('aluno'))
 
-    elif dados.get('tipo_vinculo') == 'Servidor (Docente)':
-        if "Portuguesa" in dados.get('tipo_vinculo'):
+    elif "Servidor" in dados.get('tipo_vinculo'):
+        if "Portuguesa" in dados.get('vinculo').get('disciplina_ingresso'):
+            print('Deu certo')
             return redirect(url_for('professor'))
         else:
-            return redirect(url_for('index'))
+            return redirect(url_for('login_suap'))
