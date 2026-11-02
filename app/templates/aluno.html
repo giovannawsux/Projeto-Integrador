@@ -1,101 +1,20 @@
 {% extends "base.html" %}
-
 {% block titulo %}Área do Aluno | Entrelinhas{% endblock %}
-
-{% block estilos %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/aluno.css') }}">
-{% endblock %}
-
-{% block faixa_superior %}{% endblock %}
-{% block cabecalho %}{% endblock %}
-{% block rodape %}{% endblock %}
-
+{% block estilos %}<link rel="stylesheet" href="{{ url_for('static', filename='css/aluno.css') }}">{% endblock %}
+{% block faixa_superior %}{% endblock %}{% block cabecalho %}{% endblock %}{% block rodape %}{% endblock %}
 {% block pagina %}
-<div class="student-page">
-  <div class="student-wrap">
-    <header class="student-topbar">
-      <a class="student-brand" href="{{ url_for('index') }}" style="text-decoration:none;color:inherit">
-        <span class="student-brand-mark">En</span>
-        <span><strong>Entrelinhas</strong><small>Área do estudante · IFRN</small></span>
-      </a>
-      <div class="student-top-actions">
-        <span class="student-avatar" aria-label="Perfil do aluno">{{ (session.get('nome', 'Aluno')[0])|upper }}</span>
-        <a class="student-logout" href="{{ url_for('logout') }}">Sair ↗</a>
-      </div>
-    </header>
-
-    <section class="student-welcome">
-      <div>
-        <div class="student-kicker">Seu espaço de aprendizagem</div>
-        <h1>Olá, {{ session.get('nome', 'estudante') }}! 👋</h1>
-        <p>Que tal explorar como os textos contam acontecimentos e descrevem o mundo? Continue sua jornada pelas sequências textuais narrativa e descritiva.</p>
-      </div>
-      <div class="welcome-stamp" aria-hidden="true">✍</div>
-    </section>
-
-    <div class="student-section-heading">
-      <div><h2>O que você quer estudar?</h2><p>Escolha uma área para começar ou continuar.</p></div>
-    </div>
-
-    <section class="student-grid" aria-label="Áreas de estudo">
-      <article class="student-card">
-        <div class="student-card-top"><div class="student-icon">📖</div><span class="student-pill">Módulo 01</span></div>
-        <h3>Sequência narrativa</h3>
-        <p>Entenda enredo, personagens, tempo, espaço e a organização dos acontecimentos.</p>
-        <a class="student-card-action" href="#narrativa">Explorar conteúdo <span>→</span></a>
-      </article>
-      <article class="student-card">
-        <div class="student-card-top"><div class="student-icon red">🔎</div><span class="student-pill">Módulo 02</span></div>
-        <h3>Sequência descritiva</h3>
-        <p>Observe como adjetivos, detalhes e características ajudam a construir imagens no texto.</p>
-        <a class="student-card-action" href="#descritiva">Explorar conteúdo <span>→</span></a>
-      </article>
-      <article class="student-card">
-        <div class="student-card-top"><div class="student-icon gold">📝</div><span class="student-pill">Pratique</span></div>
-        <h3>Atividades e desafios</h3>
-        <p>Teste o que aprendeu identificando sequências e analisando trechos de textos.</p>
-        <a class="student-card-action" href="#atividades">Ver atividades <span>→</span></a>
-      </article>
-    </section>
-
-    <section class="student-lower-grid">
-      <div class="student-progress-card">
-        <div class="student-progress-head"><h3>Minha jornada</h3><span>Área demonstrativa</span></div>
-        <div class="student-progress-row">
-          <div class="student-progress-label"><span>Conhecendo a sequência narrativa</span><strong>Em breve</strong></div>
-          <div class="student-progress-track"><div class="student-progress-fill" style="width:35%"></div></div>
-        </div>
-        <div class="student-progress-row">
-          <div class="student-progress-label"><span>Conhecendo a sequência descritiva</span><strong>Em breve</strong></div>
-          <div class="student-progress-track"><div class="student-progress-fill red" style="width:15%"></div></div>
-        </div>
-        <p style="font-size:11px;color:#849087;margin:18px 0 0">Os indicadores são ilustrativos e poderão ser ligados às atividades concluídas quando o sistema estiver integrado.</p>
-      </div>
-      <aside class="student-tip-card">
-        <div class="tip-symbol" aria-hidden="true">💡</div>
-        <h3>Dica de leitura</h3>
-        <p>Ao analisar um texto, pergunte: ele destaca uma sequência de acontecimentos ou apresenta características de algo ou alguém? Essa pista ajuda a reconhecer a sequência predominante.</p>
-        <a href="#atividades">Colocar em prática →</a>
-      </aside>
-    </section>
-
-    <section id="narrativa" class="student-card" style="margin-top:20px">
-      <h3>Sequência narrativa</h3>
-      <p>Uma narrativa costuma apresentar acontecimentos encadeados no tempo. Procure identificar quem participa, onde e quando ocorre a ação e como os fatos se desenvolvem.</p>
-    </section>
-    <section id="descritiva" class="student-card" style="margin-top:14px">
-      <h3>Sequência descritiva</h3>
-      <p>Uma descrição destaca traços e particularidades. Observe os substantivos, adjetivos, expressões de localização e outros detalhes que ajudam a caracterizar o que é descrito.</p>
-    </section>
-    <section id="atividades" class="student-card" style="margin-top:14px">
-      <h3>Atividades e desafios</h3>
-      <p>Esta área pode receber exercícios, textos da turma de Info 2N e perguntas de interpretação em uma próxima etapa do projeto.</p>
-    </section>
-
-    <footer class="student-footer">
-      <span><strong>Entrelinhas</strong> · Projeto acadêmico do IFRN</span>
-      <span>Info 2N · Orientação: Prof.ª Juceli Regis</span>
-    </footer>
-  </div>
-</div>
+<div class="student-page"><div class="student-wrap">
+<header class="student-topbar"><a class="student-brand" href="{{ url_for('index') }}" aria-label="Entrelinhas — início"><span class="student-brand-mark">En</span><span class="student-brand-text"><strong>Entrelinhas</strong><small>Área do estudante · IFRN</small></span></a>
+<div class="student-top-actions"><span class="student-avatar" aria-label="Perfil do estudante">{{ (current_user.username[0] if current_user.is_authenticated and current_user.username else 'E')|upper }}</span><a class="student-logout" href="{{ url_for('logout') }}">Sair</a></div></header>
+<section class="student-welcome"><div class="welcome-content"><span class="student-kicker">Área de aprendizagem</span><h1>Olá, estudante.</h1><p>Este é o seu espaço para aprender, explorar textos e desenvolver suas habilidades de leitura e interpretação. Escolha um conteúdo para continuar sua jornada.</p></div><div class="welcome-stamp" aria-hidden="true"><span>Entrelinhas</span><small>Leitura e escrita</small></div></section>
+<div class="student-section-heading"><div><h2>Conteúdos para explorar</h2><p>Escolha um tema para estudar ou pratique o que aprendeu.</p></div></div>
+<section class="student-grid" aria-label="Áreas de estudo">
+<article class="student-card"><div class="student-card-top"><div class="student-icon">01</div><span class="student-pill">Módulo 01</span></div><h3>Sequência narrativa</h3><p>Entenda como uma história se organiza, conheça seus personagens e observe a relação entre tempo, espaço e acontecimentos.</p><a class="student-card-action" href="{{ url_for('sNarrativa') }}">Explorar conteúdo <span aria-hidden="true">→</span></a></article>
+<article class="student-card"><div class="student-card-top"><div class="student-icon red">02</div><span class="student-pill">Módulo 02</span></div><h3>Sequência descritiva</h3><p>Descubra como palavras e detalhes caracterizam pessoas, lugares, objetos e situações, criando imagens para o leitor.</p><a class="student-card-action" href="{{ url_for('sDescritiva') }}">Explorar conteúdo <span aria-hidden="true">→</span></a></article>
+<article class="student-card"><div class="student-card-top"><div class="student-icon gold">03</div><span class="student-pill">Prática</span></div><h3>Atividades e desafios</h3><p>Leia trechos, observe suas características e coloque em prática o que estudou sobre as sequências textuais.</p><a class="student-card-action" href="{{ url_for('atividades') }}">Acessar atividades <span aria-hidden="true">→</span></a></article></section>
+<section class="student-lower-grid"><div class="student-progress-card"><div class="student-progress-head"><h3>Minha jornada</h3><span>Área demonstrativa</span></div>
+<div class="student-progress-row"><div class="student-progress-label"><span>Sequência narrativa</span><strong>Em breve</strong></div><div class="student-progress-track"><div class="student-progress-fill" style="width:35%"></div></div></div>
+<div class="student-progress-row"><div class="student-progress-label"><span>Sequência descritiva</span><strong>Em breve</strong></div><div class="student-progress-track"><div class="student-progress-fill red" style="width:15%"></div></div></div><p class="progress-note">O acompanhamento do progresso poderá ser integrado às atividades concluídas em uma próxima etapa.</p></div>
+<aside class="student-tip-card"><span class="tip-label">PARA REFLETIR</span><h3>Observe a intenção do texto</h3><p>O texto apresenta acontecimentos em sequência ou destaca características de algo ou alguém? Identificar essa intenção é um bom primeiro passo para reconhecer a sequência textual.</p><a href="{{ url_for('atividades') }}">Praticar agora →</a></aside></section>
+<footer class="student-footer"><span><strong>Entrelinhas</strong> · Projeto acadêmico do IFRN</span><span>INFO3M · Orientação: Prof.ª Juceli Regis</span></footer></div></div>
 {% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block titulo %}Atividades | Entrelinhas{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{{ url_for('static', filename='css/conteudo.css') }}">{% endblock %}
+{% block faixa_superior %}{% endblock %}{% block cabecalho %}{% endblock %}{% block rodape %}{% endblock %}
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("activitiesForm");
+  const resultado = document.getElementById("activitiesResult");
+  const respostas = { q1: "b", q2: "a", q3: "c" };
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    let acertos = 0, respondidas = 0;
+    Object.keys(respostas).forEach(function (questao) {
+      const marcada = form.querySelector('input[name="' + questao + '"]:checked');
+      const feedback = document.getElementById("feedback-" + questao);
+      feedback.className = "activity-feedback visible";
+      if (!marcada) { feedback.classList.add("incorrect"); feedback.textContent = "Você ainda não respondeu esta questão."; return; }
+      respondidas++;
+      if (marcada.value === respostas[questao]) { acertos++; feedback.classList.add("correct"); feedback.textContent = "Resposta correta! Muito bem."; }
+      else { feedback.classList.add("incorrect"); feedback.textContent = "Não é essa alternativa. Releia o trecho e observe a intenção predominante."; }
+    });
+    resultado.hidden = false;
+    resultado.textContent = "Você acertou " + acertos + " de " + respondidas + " questão(ões) respondida(s). Revise os comentários e tente novamente quando quiser.";
+    resultado.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+  form.addEventListener("reset", function () {
+    document.querySelectorAll(".activity-feedback").forEach(function (item) { item.className = "activity-feedback"; item.textContent = ""; });
+    resultado.hidden = true; resultado.textContent = "";
+  });
+});
+</script>
+{% endblock %}
+{% block pagina %}
+<main class="content-page"><div class="content-wrap"><nav class="content-nav"><a class="content-back" href="{{ url_for('aluno') }}">← Voltar à área do aluno</a><span class="content-eyebrow">Prática de aprendizagem</span></nav>
+<header class="content-hero"><span class="content-eyebrow">Vamos praticar?</span><h1>Atividades e desafios</h1><p>Leia os trechos com atenção e identifique a sequência textual predominante. Mais importante do que decorar conceitos é observar como cada texto constrói seus sentidos.</p></header>
+<div class="content-layout"><div class="content-main"><section class="content-panel"><span class="content-section-number">ATIVIDADE · 01</span><h2>Reconhecendo as sequências textuais</h2><p>Selecione uma alternativa para cada questão. Ao finalizar, você verá um retorno sobre suas respostas.</p><form id="activitiesForm">
+<div class="activity-question"><h3>1. “Pedro abriu a porta, entrou na sala e percebeu que havia esquecido o caderno. Voltou rapidamente para buscá-lo.” Qual sequência predomina no trecho?</h3><div class="activity-options"><label class="activity-option"><input type="radio" name="q1" value="a"><span>Descritiva, pois apresenta características da sala.</span></label><label class="activity-option"><input type="radio" name="q1" value="b"><span>Narrativa, pois apresenta ações encadeadas no tempo.</span></label><label class="activity-option"><input type="radio" name="q1" value="c"><span>Argumentativa, pois defende uma opinião.</span></label></div><div id="feedback-q1" class="activity-feedback" aria-live="polite"></div></div>
+<div class="activity-question"><h3>2. “O jardim era pequeno, cercado por pedras claras. As flores amarelas contrastavam com as folhas verdes e brilhantes.” Qual é a intenção predominante?</h3><div class="activity-options"><label class="activity-option"><input type="radio" name="q2" value="a"><span>Descrever o jardim, destacando suas características.</span></label><label class="activity-option"><input type="radio" name="q2" value="b"><span>Narrar uma sequência de acontecimentos.</span></label><label class="activity-option"><input type="radio" name="q2" value="c"><span>Apresentar instruções para cuidar das flores.</span></label></div><div id="feedback-q2" class="activity-feedback" aria-live="polite"></div></div>
+<div class="activity-question"><h3>3. Leia: “A estação estava quase vazia. Um homem aguardava junto à plataforma quando o trem finalmente chegou.” O trecho combina descrição e narração. Qual elemento narrativo aparece com mais clareza na segunda frase?</h3><div class="activity-options"><label class="activity-option"><input type="radio" name="q3" value="a"><span>Caracterização detalhada do espaço.</span></label><label class="activity-option"><input type="radio" name="q3" value="b"><span>Opinião do autor sobre a estação.</span></label><label class="activity-option"><input type="radio" name="q3" value="c"><span>Acontecimento que faz a situação avançar.</span></label></div><div id="feedback-q3" class="activity-feedback" aria-live="polite"></div></div>
+<div class="content-actions"><button class="content-button activity-submit" type="submit">Conferir respostas</button><button class="content-button secondary activity-submit" type="reset">Tentar novamente</button></div><div id="activitiesResult" class="content-callout" role="status" hidden></div>
+</form></section></div>
+<aside class="content-aside"><span class="aside-label">ANTES DE RESPONDER</span><h2>Uma estratégia de leitura</h2><ul><li>Leia o trecho inteiro, não apenas uma palavra.</li><li>Observe se há ações acontecendo em sequência.</li><li>Procure características, detalhes e sensações.</li><li>Identifique a intenção predominante do texto.</li></ul><div class="content-callout">Um mesmo trecho pode apresentar mais de uma sequência. A questão é perceber qual delas se destaca naquele contexto.</div><div class="content-actions"><a class="content-button secondary" href="{{ url_for('sNarrativa') }}">Rever narrativa</a><a class="content-button secondary" href="{{ url_for('sDescritiva') }}">Rever descrição</a></div></aside></div>
+<footer class="content-footer"><span><strong>Entrelinhas</strong> · Projeto acadêmico do IFRN</span><span>INFO3M · Língua Portuguesa e Literatura III</span></footer></div></main>
+{% endblock %}

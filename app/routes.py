@@ -20,8 +20,6 @@ def index():
 def login():
     return render_template("login.html")
 
-
-
 @app.route("/professor")
 def professor():
     return render_template("professor.html")
@@ -30,51 +28,23 @@ def professor():
 def aluno():
     return render_template('aluno.html')
 
+@app.route('/sNarrativa')
+def sNarrativa():
+    return render_template('sNarrativa.html')
+
+@app.route('/sDescritiva')
+def sDescritiva():
+    return render_template('sDescritiva.html')
+
+@app.route('/atividades')
+def atividades():
+    return render_template('atividades.html')
 
 @app.route('/sobre')
 def sobre():
     return render_template('sobre.html')
 
-@app.route('/endereco')
-def endereco():
-    return render_template('endereco.html')
-
-
-@app.route('/inserir', methods=['GET', 'POST'])
-def inserir_usuario():
-    formulario = UsuarioForm()
-    if formulario.validate_on_submit():
-        if UsuarioService.salvar(formulario):
-            flash("Usuario cadastrado com sucesso!", category="success")
-            return redirect("/")
-        else:
-            flash("Usuário não cadastrado.", category="warning")
-            return redirect("/inserir")
-    return render_template('cadastro_usuario.html', 
-                            title='Cadastro de Usuário', 
-                            form=formulario)
-    
-
-@app.route('/buscar_usuario', methods=['GET', 'POST'])
-def buscar_usuario():
-    if request.method == 'GET':
-        return render_template('buscar_usuario.html')
-    elif request.method == 'POST':
-        email_a_buscar = request.form.get("email")
-        if email_a_buscar:
-            usuario = UsuarioService.buscar_por_email(email_a_buscar)
-            print(usuario.username)
-            print(usuario.email)
-            UsuarioService.atualizar(usuario)
-        return render_template("index.html")
-
-
-@app.route('/listar_usuario')
-def listar_usuario():
-    usuarios = UsuarioService.listar()
-    return render_template('listar_usuario.html', title='Listagem de Usuário', usuarios = usuarios)
-
-
+#rotas relacionadas ao usuario e uso do AP do suap:
 @app.route('/logout')
 def logout():
     AuthenticationService.logout()
@@ -161,3 +131,46 @@ def suap_eu():
             return redirect(url_for('professor'))
         else:
             return redirect(url_for('login_suap'))
+
+
+
+#as rotas abaixos vem do modelo aprendido em sala:
+@app.route('/endereco')
+def endereco():
+    return render_template('endereco.html')
+
+
+@app.route('/inserir', methods=['GET', 'POST'])
+def inserir_usuario():
+    formulario = UsuarioForm()
+    if formulario.validate_on_submit():
+        if UsuarioService.salvar(formulario):
+            flash("Usuario cadastrado com sucesso!", category="success")
+            return redirect("/")
+        else:
+            flash("Usuário não cadastrado.", category="warning")
+            return redirect("/inserir")
+    return render_template('cadastro_usuario.html', 
+                            title='Cadastro de Usuário', 
+                            form=formulario)
+    
+
+@app.route('/buscar_usuario', methods=['GET', 'POST'])
+def buscar_usuario():
+    if request.method == 'GET':
+        return render_template('buscar_usuario.html')
+    elif request.method == 'POST':
+        email_a_buscar = request.form.get("email")
+        if email_a_buscar:
+            usuario = UsuarioService.buscar_por_email(email_a_buscar)
+            print(usuario.username)
+            print(usuario.email)
+            UsuarioService.atualizar(usuario)
+        return render_template("index.html")
+
+
+@app.route('/listar_usuario')
+def listar_usuario():
+    usuarios = UsuarioService.listar()
+    return render_template('listar_usuario.html', title='Listagem de Usuário', usuarios = usuarios)
+
