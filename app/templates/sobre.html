@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block titulo %}Sobre o projeto | Entrelinhas{% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sobre.css') }}">
+{% endblock %}
+
+{% block conteudo %}
+<main class="sobre-page">
+  <header class="sobre-masthead">
+    <div class="masthead-main">
+      <div class="masthead-title">
+        <span class="sobre-kicker">Por trás da plataforma</span>
+        <h1>Uma ideia.<br><em>Duas áreas.</em><br>Um projeto.</h1>
+      </div>
+      <div class="masthead-aside">
+        <span class="aside-mark">“</span>
+        <p>Quando a linguagem encontra a tecnologia, o aprendizado ganha novas formas de acontecer.</p>
+        <a class="sobre-button" href="{{ url_for('index') }}">Voltar ao início <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="masthead-bottom"><span>INFO3M 2024.1 — CAMPUS CEARÁ-MIRIM</span><span>LINGUAGENS · EDUCAÇÃO · TECNOLOGIA</span></div>
+  </header>
+
+  <section class="sobre-section">
+    <div class="section-intro">
+      <span class="section-kicker">De onde surgiu a ideia</span>
+      <h2>Uma proposta integradora</h2>
+      <p>
+        O Projeto Integrador faz parte da formação das turmas do terceiro ano do
+        Curso Técnico Integrado em Informática do IFRN. A proposta é relacionar
+        conhecimentos de uma disciplina já estudada com a disciplina âncora do
+        projeto, Programação para Internet (PPI), colocando em prática saberes
+        construídos ao longo do curso.
+      </p>
+    </div>
+
+    <div class="origin-card">
+      <div class="origin-icon" aria-hidden="true">✦</div>
+      <div>
+        <h3>O início do nosso percurso</h3>
+        <p>
+          A partir da orientação de João Paulo, coordenador do curso, nossa equipe
+          foi incentivada a escolher uma área de conhecimento e buscar um(a)
+          professor(a) que pudesse acompanhar a proposta. Depois de definir que
+          trabalharíamos com Língua Portuguesa, conversamos com a professora
+          Jucely Regis, de Língua Portuguesa e Literatura III, que nos auxiliou
+          na construção do recorte temático.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tema-section">
+    <div class="tema-copy">
+      <span class="section-kicker">Nosso tema</span>
+      <h2>Narrar ou descrever: como reconhecer cada sequência?</h2>
+      <p>
+        Escolhemos abordar uma distinção que pode gerar dúvidas durante os estudos
+        de Língua Portuguesa: as características das sequências textuais narrativa
+        e descritiva. A proposta é apresentar e explorar como cada uma organiza
+        as informações e contribui para a construção dos sentidos de um texto.
+      </p>
+    </div>
+
+    <div class="sequencias-grid">
+      <article class="sequencia-card narrativa">
+        <span class="sequencia-numero">01 · NARRAR</span>
+        <h3>Sequência narrativa</h3>
+        <p>
+          Dá destaque a acontecimentos, ações e transformações que se desenvolvem
+          ao longo do tempo.
+        </p>
+      </article>
+      <article class="sequencia-card descritiva">
+        <span class="sequencia-numero">02 · DESCREVER</span>
+        <h3>Sequência descritiva</h3>
+        <p>
+          Apresenta características e detalhes de pessoas, lugares, objetos,
+          situações ou outros elementos.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="objeto-section">
+    <div class="objeto-visual" aria-hidden="true">
+      <div class="objeto-icon">✎</div>
+      <span class="objeto-caption">Produções de INFO3M</span>
+      <div class="objeto-lines"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="objeto-copy">
+      <span class="section-kicker">O que será analisado?</span>
+      <h2>Textos produzidos pela nossa turma</h2>
+      <p>
+        Nosso objeto de estudo são textos elaborados pelos próprios estudantes
+        da turma INFO3M 2024.1 em uma atividade de Língua Portuguesa. Essas produções
+        serão utilizadas como base para observar, identificar e discutir as
+        características das sequências narrativa e descritiva em situações reais
+        de escrita dos alunos.
+      </p>
+      <p>
+        Assim, o conteúdo estudado não fica restrito a exemplos prontos: ele parte
+        de textos produzidos no contexto da nossa própria turma.
+      </p>
+    </div>
+  </section>
+
+  <section class="desenvolvimento-section">
+    <div class="section-intro">
+      <span class="section-kicker">Da ideia à plataforma</span>
+      <h2>Educação e tecnologia trabalhando juntas</h2>
+      <p>
+        Com o tema definido e o acompanhamento da área de Língua Portuguesa,
+        buscamos transformar a proposta em uma ferramenta digital de estudo.
+      </p>
+    </div>
+    <div class="etapas-grid">
+      <article class="etapa-card">
+        <span class="etapa-number">01</span>
+        <h3>Escolha do tema</h3>
+        <p>Definição do recorte de Língua Portuguesa: sequências narrativa e descritiva.</p>
+      </article>
+      <article class="etapa-card">
+        <span class="etapa-number">02</span>
+        <h3>Orientação pedagógica</h3>
+        <p>Colaboração da professora Jucely Regis na abordagem do conteúdo de Língua Portuguesa e Literatura III.</p>
+      </article>
+      <article class="etapa-card">
+        <span class="etapa-number">03</span>
+        <h3>Desenvolvimento web</h3>
+        <p>Com o professor Leo Silva, de Programação para Internet, trabalhamos na construção do site e de suas funcionalidades.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="turma-section">
+    <div class="turma-copy">
+      <span class="section-kicker">Quem está por trás</span>
+      <h2>Turma INFO3M | IFRN Campus Ceará-Mirim</h2>
+      <p>
+        Este projeto é resultado do trabalho desenvolvido pela turma INFO3M em 2026,
+        no terceiro ano do Curso Técnico Integrado em Informática do IFRN Campus
+        Ceará-Mirim, integrando os conhecimentos de Língua Portuguesa e de
+        Programação para Internet.
+      </p>
+      <p class="turma-caption">
+        <strong>INFO3M com o coordenador de curso João Paulo</strong><br>
+        Foto retirada no final do primeiro semestre, quando João Paulo foi nosso professor de Manutenção de Computadores.
+      </p>
+    </div>
+
+    <figure class="turma-photo-placeholder">
+      <img src="static/img/turmainfo3m.jpg">
+    </figure>
+  </section>
+
+  <section class="sobre-final">
+    <span class="section-kicker">Entrelinhas</span>
+    <h2>Mais do que identificar diferenças, queremos aprender a ler os textos com atenção.</h2>
+    <p>
+      Explore a plataforma, conheça as produções e participe das atividades.
+      Cada texto é uma oportunidade de perceber como a linguagem se organiza
+      e produz sentidos.
+    </p>
+    <a class="sobre-button button-light" href="{{ url_for('login') }}">Acessar a plataforma <span aria-hidden="true">→</span></a>
+  </section>
+</main>
+{% endblock %}

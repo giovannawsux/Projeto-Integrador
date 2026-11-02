@@ -118,4 +118,120 @@
         </div>
       </section>
     </section>
+
+      <section class="team-section" id="equipe" aria-labelledby="team-title">
+        <div class="team-heading">
+          <span class="section-kicker">Nossa equipe</span>
+          <h2 id="team-title">Quem faz o projeto acontecer.</h2>
+          <p>Conheça os professores e alunos que colaboram para construir o Entrelinhas.</p>
+        </div>
+
+        <div class="team-carousel">
+          <button class="team-arrow team-prev" type="button" aria-label="Mostrar integrantes anteriores">
+            <span aria-hidden="true">‹</span>
+          </button>
+
+          <div class="team-track" id="team-track" tabindex="0" aria-label="Integrantes do projeto">
+            <article class="team-card">
+              <div class="team-photo team-photo-teacher" aria-label="Espaço para foto de Jucely Regis">
+                <span class="team-initials">JR</span>
+              </div>
+              <div class="team-info">
+                <h3>Jucely Regis</h3>
+                <span class="team-role role-teacher">Orientadora</span>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-photo team-photo-student" aria-label="Espaço para foto do primeiro aluno">
+                <span class="team-initials">A1</span>
+              </div>
+              <div class="team-info">
+                <h3>Nome do(a) aluno(a)</h3>
+                <span class="team-role role-student">Aluno(a)</span>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-photo team-photo-student" aria-label="Espaço para foto do segundo aluno">
+                <span class="team-initials">A2</span>
+              </div>
+              <div class="team-info">
+                <h3>Nome do(a) aluno(a)</h3>
+                <span class="team-role role-student">Aluno(a)</span>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-photo team-photo-student" aria-label="Espaço para foto do terceiro aluno">
+                <span class="team-initials">A3</span>
+              </div>
+              <div class="team-info">
+                <h3>Nome do(a) aluno(a)</h3>
+                <span class="team-role role-student">Aluno(a)</span>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-photo team-photo-student" aria-label="Espaço para foto do quarto aluno">
+                <span class="team-initials">A4</span>
+              </div>
+              <div class="team-info">
+                <h3>Nome do(a) aluno(a)</h3>
+                <span class="team-role role-student">Aluno(a)</span>
+              </div>
+            </article>
+          </div>
+
+          <button class="team-arrow team-next" type="button" aria-label="Mostrar próximos integrantes">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+        <div class="team-dots" id="team-dots" aria-label="Navegação dos integrantes"></div>
+      </section>
+
   {% endblock %}
+{% block scripts %}
+<script>
+  (() => {
+    const track = document.getElementById("team-track");
+    const dotsContainer = document.getElementById("team-dots");
+    if (!track || !dotsContainer) return;
+    const cards = Array.from(track.querySelectorAll(".team-card"));
+    const previous = document.querySelector(".team-prev");
+    const next = document.querySelector(".team-next");
+
+    cards.forEach((card, index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "team-dot";
+      dot.setAttribute("aria-label", `Ir para o integrante ${index + 1}`);
+      dot.addEventListener("click", () => {
+        track.scrollTo({ left: card.offsetLeft - cards[0].offsetLeft, behavior: "smooth" });
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.children);
+    const update = () => {
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let active = 0;
+      let distance = Infinity;
+      cards.forEach((card, index) => {
+        const cardCenter = card.offsetLeft - cards[0].offsetLeft + card.offsetWidth / 2;
+        const currentDistance = Math.abs(cardCenter - center);
+        if (currentDistance < distance) { distance = currentDistance; active = index; }
+      });
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("is-active", index === active);
+        dot.setAttribute("aria-current", index === active ? "true" : "false");
+      });
+    };
+    previous.addEventListener("click", () => track.scrollBy({ left: -track.clientWidth * .75, behavior: "smooth" }));
+    next.addEventListener("click", () => track.scrollBy({ left: track.clientWidth * .75, behavior: "smooth" }));
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  })();
+</script>
+{% endblock %}

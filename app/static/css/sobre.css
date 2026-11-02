@@ -1,0 +1,187 @@
+/* Página Sobre: identidade editorial própria, mantendo as cores do Entrelinhas */
+
+/* ===================================================
+   Variáveis Globais e Estilos Gerais (compatíveis com base.html / index.css)
+   =================================================== */
+:root {
+  --ifrn-green: #08783e;
+  --ifrn-green-dark: #064d2d;
+  --ifrn-red: #c52b32;
+  --ink: #182a20;
+  --paper: #fbfcf9;
+  --muted: #66736a;
+}
+
+* { 
+  box-sizing: border-box; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+a { 
+  color: inherit; 
+}
+
+/* Faixa colorida do topo (top-line) */
+.top-line {
+  height: 6px;
+  background: linear-gradient(90deg, var(--ifrn-green) 0 72%, var(--ifrn-red) 72% 100%);
+}
+
+/* Cabeçalho do site (site-header) */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 22px clamp(22px, 6vw, 88px);
+  background: rgba(255,255,255,.94);
+  border-bottom: 1px solid #e4ebe5;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--ifrn-green);
+  color: white;
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -1px;
+  box-shadow: 0 7px 18px #08783e2b;
+}
+
+.brand-name { 
+  font-weight: 800; 
+  font-size: 20px; 
+  letter-spacing: -.5px; 
+}
+
+.brand-sub { 
+  display: block; 
+  color: var(--muted); 
+  font-size: 11px; 
+  margin-top: 3px; 
+  letter-spacing: .8px; 
+  text-transform: uppercase; 
+}
+
+.header-note { 
+  font-size: 13px; 
+  color: var(--muted); 
+  text-align: right; 
+}
+
+/* Rodapé do site (site-footer) */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 23px clamp(22px, 6vw, 88px);
+  color: #e7f3e9;
+  background: #124b2d;
+  font-size: 12px;
+}
+
+.site-footer strong { 
+  color: white; 
+}
+
+.footer-mark { 
+  color: #ffb8b8; 
+}
+
+/* Ajustes Responsivos do Header/Footer */
+@media (max-width: 800px) {
+  .header-note { display: none; }
+}
+
+@media (max-width: 520px) {
+  .site-footer { 
+    align-items: flex-start; 
+    flex-direction: column; 
+  }
+}
+.sobre-page{--green:#08783e;--deep:#064d2d;--red:#c52b32;--ink:#182a20;--muted:#66736a;color:var(--ink);background:#fbfcf9;overflow:hidden}
+.sobre-page *{box-sizing:border-box}
+.sobre-masthead{padding:25px clamp(22px,8vw,116px) 22px;color:#fff;background:var(--deep)}
+.masthead-top,.masthead-bottom{display:flex;justify-content:space-between;gap:18px;color:#c9dfd0;font:700 10px/1.4 Arial,sans-serif;letter-spacing:1.7px}
+.masthead-top{padding-bottom:18px;border-bottom:1px solid #ffffff35}
+.masthead-main{display:grid;grid-template-columns:1.25fr .75fr;align-items:end;gap:50px;padding:clamp(48px,7vw,92px) 0 65px}
+.sobre-kicker{display:inline-block;margin-bottom:21px;color:#f2b9b9;font:700 11px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
+.masthead-title h1{margin:0;color:#fff;font:800 clamp(48px,7.5vw,100px)/.91 Georgia,'Times New Roman',serif;letter-spacing:-4px}
+.masthead-title h1 em{color:#b9dfc3;font-weight:400}
+.masthead-aside{max-width:360px;padding:0 0 5px 26px;border-left:2px solid #df6b70}
+.aside-mark{display:block;height:43px;color:#f08b8f;font:72px/.8 Georgia,serif}
+.masthead-aside p{margin:10px 0 25px;color:#e0eee4;font:20px/1.55 Georgia,serif}
+.sobre-button{display:inline-flex;align-items:center;gap:15px;min-height:43px;padding:0 17px;border:1px solid #ffffff80;border-radius:2px;color:#fff;background:transparent;font:700 11px Arial,sans-serif;letter-spacing:.7px;text-decoration:none;text-transform:uppercase;transition:.2s}
+.sobre-button:hover{color:var(--deep);background:#fff}
+.masthead-bottom{padding-top:16px;border-top:1px solid #ffffff35;font-size:9px}
+.sobre-section,.tema-section,.desenvolvimento-section,.objeto-section,.turma-section{padding:92px clamp(22px,10vw,145px)}
+.sobre-section{background:#fbfcf9}
+.section-intro{max-width:790px;margin:0 auto 42px 0}
+.section-kicker{color:var(--red);font:800 10px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
+.section-intro h2,.tema-copy h2,.objeto-copy h2,.turma-copy h2{margin:15px 0 18px;color:var(--ink);font:700 clamp(34px,4.2vw,54px)/1.05 Georgia,serif;letter-spacing:-1.6px}
+.section-intro p,.tema-copy p,.objeto-copy p,.turma-copy p{max-width:760px;color:var(--muted);font:16px/1.95 Arial,sans-serif}
+.origin-card{display:grid;grid-template-columns:90px 1fr;max-width:980px;margin-left:auto;padding:30px 0;border-top:1px solid #d9e2da;border-bottom:1px solid #d9e2da}
+.origin-icon{color:var(--red);font:50px/1 Georgia,serif}
+.origin-card h3,.etapa-card h3{margin:0 0 10px;color:var(--deep);font:700 22px Georgia,serif}
+.origin-card p{max-width:760px;margin:0;color:var(--muted);font:14px/1.9 Arial,sans-serif}
+.tema-section{position:relative;background:#f0f5ef}
+.tema-section:before{content:"02";position:absolute;top:45px;right:clamp(22px,8vw,116px);color:#dce9dd;font:700 clamp(100px,18vw,220px)/1 Georgia,serif;pointer-events:none}
+.tema-copy{position:relative;z-index:1;max-width:780px;margin-bottom:46px}
+.sequencias-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #cbd9cd;border-bottom:1px solid #cbd9cd}
+.sequencia-card{padding:32px 35px 35px 0}
+.sequencia-card+.sequencia-card{padding-left:35px;border-left:1px solid #cbd9cd}
+.sequencia-numero{color:var(--green);font:800 10px Arial,sans-serif;letter-spacing:1.8px}
+.descritiva .sequencia-numero{color:var(--red)}
+.sequencia-card h3{margin:18px 0 12px;color:var(--ink);font:700 27px Georgia,serif}
+.sequencia-card p{max-width:390px;margin:0;color:var(--muted);font:14px/1.85 Arial,sans-serif}
+.objeto-section{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:clamp(40px,8vw,110px);background:#fff}
+.objeto-visual{min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#e8f1e9;border:1px solid #d7e4d9;position:relative}
+.objeto-visual:before,.objeto-visual:after{content:"";position:absolute;width:44px;height:44px;border-color:var(--red);border-style:solid}
+.objeto-visual:before{top:15px;left:15px;border-width:2px 0 0 2px}
+.objeto-visual:after{right:15px;bottom:15px;border-width:0 2px 2px 0}
+.objeto-icon{color:var(--green);font:82px Georgia,serif}
+.objeto-caption{margin:10px 0 22px;color:var(--deep);font:700 12px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
+.objeto-lines{width:62%}.objeto-lines i{display:block;height:2px;margin:10px 0;background:#bfd3c3}
+.objeto-lines i:nth-child(2){width:84%}.objeto-lines i:nth-child(3){width:94%}.objeto-lines i:nth-child(4){width:60%}
+.objeto-copy p+p,.turma-copy p+p{margin-top:13px}
+.desenvolvimento-section{background:#fbfcf9;border-top:1px solid #e2e9e2}
+.etapas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.etapa-card{padding-top:20px;border-top:3px solid var(--green)}
+.etapa-card:nth-child(2){border-color:#b9cdbd}.etapa-card:nth-child(3){border-color:var(--red)}
+.etapa-number{display:block;margin-bottom:23px;color:var(--red);font:700 13px Georgia,serif}
+.etapa-card h3{font-size:19px}.etapa-card p{margin:0;color:var(--muted);font:13px/1.85 Arial,sans-serif}
+.turma-section{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(35px,7vw,90px);background:#f0f5ef}
+.turma-caption{margin-top:22px!important;padding:15px 18px;border-left:3px solid var(--red);color:#59675e!important;background:#e5eee6;font-size:12px!important}
+.turma-caption code{color:var(--deep);font-size:11px}
+.turma-photo-placeholder{min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;margin:0;border:1px dashed #8eae96;color:var(--deep);background:#e6f0e7;text-align:center}
+.photo-placeholder-icon{color:var(--red);font:58px Georgia,serif}
+.turma-photo-placeholder span{font:700 18px Georgia,serif}.turma-photo-placeholder small{color:#728177;font:11px Arial,sans-serif}
+.sobre-final{padding:76px 22px 82px;color:#fff;background:var(--deep);text-align:center}
+.sobre-final .section-kicker{color:#f2b9b9}
+.sobre-final h2{max-width:760px;margin:17px auto;color:#fff;font:700 clamp(31px,4vw,48px)/1.08 Georgia,serif}
+.sobre-final p{max-width:650px;margin:0 auto 27px;color:#d8e8dc;font:14px/1.9 Arial,sans-serif}
+.button-light{color:var(--deep);background:#fff;border-color:#fff}.button-light:hover{color:#fff;background:transparent}
+@media(max-width:800px){.masthead-main{grid-template-columns:1fr;gap:42px}.masthead-aside{max-width:520px}.objeto-section,.turma-section{grid-template-columns:1fr}.etapas-grid{grid-template-columns:1fr;gap:30px}}
+@media(max-width:560px){.masthead-title h1{letter-spacing:-2px}.masthead-top,.masthead-bottom{flex-direction:column;gap:7px}.sequencias-grid{grid-template-columns:1fr}.sequencia-card,.sequencia-card+.sequencia-card{padding:27px 0;border-left:0}.sequencia-card+.sequencia-card{border-top:1px solid #cbd9cd}.origin-card{grid-template-columns:1fr;gap:15px}.sobre-section,.tema-section,.objeto-section,.desenvolvimento-section,.turma-section{padding-top:62px;padding-bottom:62px}}
