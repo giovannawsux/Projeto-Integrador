@@ -26,6 +26,9 @@ def professor():
 
 @app.route('/aluno')
 def aluno():
+    access_token = session.get('suap_access_token')
+    dados = SuapAuthenticationService.eu(access_token)
+    nome = dados.get('nome_usual')
     return render_template('aluno.html')
 
 @app.route('/sNarrativa')
